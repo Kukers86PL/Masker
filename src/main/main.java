@@ -17,7 +17,7 @@ public class main {
 	public static JPanel g_cPanelMain = new JPanel();
 	public static JPanel g_cPanelSecond = new JPanel();
 	public static JPasswordField g_cPassword = new JPasswordField(20);
-	public static int g_iCache = 0;
+	public static int g_iLength = 0;
 	public static List<JButton> g_lcButtons = new ArrayList<JButton>();
 	public static Timer g_cTimer = new Timer();
 	
@@ -46,21 +46,22 @@ public class main {
 	    g_cTimer.scheduleAtFixedRate(new TimerTask() {
 	    	@Override
 	    	public void run() {
-	    		if (g_iCache != g_cPassword.getPassword().length)
+	    		if (g_iLength != g_cPassword.getPassword().length)
 	    		{
-	    			g_iCache = g_cPassword.getPassword().length;
+	    			g_iLength = g_cPassword.getPassword().length;
 	    			
 		    		g_cFrame.setSize(400,80);
 		  			g_cPanelSecond.removeAll();
 		  			g_lcButtons.clear();
 		  			
-		  			for (int i = 0; i < g_cPassword.getPassword().length; ++i)
+		  			for (int i = 0; i < g_iLength; ++i)
 		  			{
 		  				JButton button = new JButton(String.valueOf(i + 1)); 
 		  				g_lcButtons.add(button);
 		  				g_cPanelSecond.add(button);
-		  				g_cFrame.setSize(400,120);
 		  			}
+		  			
+		  			g_cFrame.setSize(Math.max(400, g_iLength * 55), 120);
 		  			
 		  			g_cFrame.repaint();
 	    		}
