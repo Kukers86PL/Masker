@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author kuki
- *
- */
-module Remusk {
-}
