@@ -61,7 +61,7 @@ public class main {
 		  				g_cPanelSecond.add(button);
 		  			}
 		  			
-		  			g_cFrame.setSize(Math.max(400, g_iLength * 55), 120);
+		  			g_cFrame.setSize(Math.max(400, g_iLength * 55), 125);
 		  			
 		  			g_cFrame.repaint();
 	    		}
