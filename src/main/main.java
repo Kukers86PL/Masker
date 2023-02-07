@@ -1,6 +1,7 @@
 package main;
 
 import javax.swing.*;
+import java.awt.FlowLayout;
 
 public class main {
 
@@ -10,9 +11,18 @@ public class main {
 		// TODO Auto-generated method stub
 		JFrame frame = new JFrame("Masker " + g_sVersion);
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    frame.setSize(300,300);
-	    JButton button = new JButton("Hello World");
-	    frame.getContentPane().add(button); // Adds Button to content pane of frame
+	    frame.setSize(400,80);
+	    
+	    JLabel label = new JLabel("Password:");
+	    frame.getContentPane().add(label);
+	    
+	    JPasswordField password = new JPasswordField(20);
+	    frame.getContentPane().add(password);
+	    
+	    JButton button = new JButton("Copy");
+	    frame.getContentPane().add(button);
+	    
+	    frame.setLayout(new FlowLayout());
 	    frame.setVisible(true);
 	}
 
