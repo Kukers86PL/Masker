@@ -1,6 +1,8 @@
 package main;
 
 import javax.swing.*;
+
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,12 +15,40 @@ public class main {
 
 	public static final String g_sVersion = "1.0";
 	
+	@SuppressWarnings("serial")
+	public static class ToggleButton extends JButton implements ActionListener {
+		
+		private boolean checked = false;
+
+		public ToggleButton(String value) {
+			super(value);
+			
+			this.setBackground(Color.GRAY);
+			this.setForeground(Color.WHITE);
+			this.addActionListener(this);
+		}
+		
+		public void actionPerformed(ActionEvent e) {
+	    	checked = !checked;
+	    	if (checked)
+	    	{
+	    		this.setBackground(Color.GREEN);
+	    		this.setForeground(Color.BLACK);
+	    	}
+	    	else
+	    	{
+	    		this.setBackground(Color.GRAY);
+	    		this.setForeground(Color.WHITE);
+	    	}
+	    }
+	}
+	
 	public static JFrame g_cFrame = new JFrame("Masker " + g_sVersion);
 	public static JPanel g_cPanelMain = new JPanel();
 	public static JPanel g_cPanelSecond = new JPanel();
 	public static JPasswordField g_cPassword = new JPasswordField(20);
 	public static int g_iLength = 0;
-	public static List<JButton> g_lcButtons = new ArrayList<JButton>();
+	public static List<ToggleButton> g_lcButtons = new ArrayList<ToggleButton>();
 	public static Timer g_cTimer = new Timer();
 	
 	public static void main(String[] args) {
@@ -56,7 +86,7 @@ public class main {
 		  			
 		  			for (int i = 0; i < g_iLength; ++i)
 		  			{
-		  				JButton button = new JButton(String.valueOf(i + 1)); 
+		  				ToggleButton button = new ToggleButton(String.valueOf(i + 1)); 
 		  				g_lcButtons.add(button);
 		  				g_cPanelSecond.add(button);
 		  			}
