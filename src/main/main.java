@@ -4,6 +4,9 @@ import javax.swing.*;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -18,7 +21,7 @@ public class main {
 	@SuppressWarnings("serial")
 	public static class ToggleButton extends JButton implements ActionListener {
 		
-		private boolean checked = false;
+		public boolean checked = false;
 
 		public ToggleButton(String value) {
 			super(value);
@@ -64,6 +67,25 @@ public class main {
 	    
 	    JButton button = new JButton("Copy");
 	    g_cPanelMain.add(button);
+	    
+	    button.addActionListener(new ActionListener() {
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	        	String masked = "";
+	        	
+	            for (int i = 0; i < g_cPassword.getPassword().length; ++i)
+	            {
+	            	if (g_lcButtons.get(i).checked)
+	            	{
+	            		masked += g_cPassword.getPassword()[i];
+	            	}
+	            }
+	            
+	            StringSelection selection = new StringSelection(masked);
+	            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+	            clipboard.setContents(selection, selection);
+	        }
+	    });
 	    
 	    g_cFrame.add(g_cPanelMain);
 	    g_cFrame.add(g_cPanelSecond);
