@@ -16,7 +16,7 @@ import java.util.TimerTask;
 
 public class main {
 
-	public static final String g_sVersion = "1.0";
+	public static final String g_sVersion = "v1.1";
 	
 	@SuppressWarnings("serial")
 	public static class ToggleButton extends JButton implements ActionListener {
@@ -65,7 +65,7 @@ public class main {
 	    
 	    g_cPanelMain.add(g_cPassword);
 	    
-	    JButton button = new JButton("Copy");
+	    JButton button = new JButton("Mask");
 	    g_cPanelMain.add(button);
 	    
 	    button.addActionListener(new ActionListener() {
