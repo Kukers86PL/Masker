@@ -1,4 +1,4 @@
-Masker v1.0
+Masker v1.1
 
 Masker is a simple helper program to manage masked passwords. Whenever you have to put masked password, this program will be handy. It works in the following way:
 
